@@ -1,6 +1,7 @@
 package Aplicacao.Login;
 
-import Aplicacao.Main;
+import Aplicacao.Menu.MenuViewController;
+import Config.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +28,7 @@ import javafx.stage.Stage;
  * @author jpc
  */
 public class LoginViewController implements Initializable {
-    private Main m;
+    User m;
     @FXML
     TextField txfUsername;
     @FXML
@@ -54,14 +55,14 @@ public class LoginViewController implements Initializable {
         String username = txfUsername.getText();
         String password = txfPassword.getText();
         try { // Vai buscar as passwords e verifica se existe alguma igual
-            Connection con = Conectar.Conect.getCon();
+            Connection con = Config.Conect.getCon();
             Statement st = con.createStatement();
             String query = "SELECT * FROM ihc WHERE username = '" + username + "' and password = md5('" + password + "');";
             // CONTROLO System.out.println(query);
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-
-                m.setUser(username);
+                m = new User(username, password);
+                MenuViewController.setUser(m);
                 Parent MenuParent = FXMLLoader.load(getClass().getResource("../Menu/MenuView.fxml"));
                 Scene MenuScene = new Scene(MenuParent);
                 
@@ -81,13 +82,9 @@ public class LoginViewController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
     }
-    	public void setMainApp(Main mainApp) {
-		this.m = mainApp;
-	}
 
 }

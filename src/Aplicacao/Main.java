@@ -13,15 +13,6 @@ import javafx.stage.Stage;
  * @author jpc
  */
 public class Main extends Application {
-    private static String user;
-        
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
 
 
     @Override
