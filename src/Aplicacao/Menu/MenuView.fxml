@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Menu.MenuViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Menu.MenuViewController">
    <children>
-      <Label fx:id="lbUser" layoutX="75.0" layoutY="102.0" prefHeight="17.0" prefWidth="59.0" text="Username" />
-      <Label fx:id="lbData" layoutX="266.0" layoutY="102.0" prefHeight="17.0" prefWidth="59.0" text="Data" />
+      <Label fx:id="lblUser" layoutX="75.0" layoutY="102.0" prefHeight="17.0" prefWidth="119.0" text="Username" />
+      <Label fx:id="lblData" alignment="CENTER_RIGHT" layoutX="247.0" layoutY="102.0" prefHeight="17.0" prefWidth="78.0" text="Data" />
       <VBox layoutX="75.0" layoutY="150.0" prefHeight="300.0" prefWidth="250.0" spacing="20.0">
          <children>
             <Button mnemonicParsing="false" onAction="#buttonNovaEntra" prefHeight="25.0" prefWidth="250.0" text="Nova Entrada">

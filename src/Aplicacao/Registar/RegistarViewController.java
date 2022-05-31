@@ -50,7 +50,7 @@ public class RegistarViewController implements Initializable {
                 // Verificar se existe algum igual na base de dados
 
                 try { // Vai buscar as passwords e verifica se existe alguma igual
-                    Connection con = Conectar.Conect.getCon();
+                    Connection con = Config.Conect.getCon();
                     Statement st = con.createStatement();
                     String query = "SELECT * FROM ihc WHERE username = '" + Username + "' or email = '" + email + "';";
                     // CONTROLO System.out.println(query);

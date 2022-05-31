@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.web.HTMLEditor?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="592.0" minWidth="787.0" prefHeight="714.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Diario.DiarioViewController">
+   <center>
+      <HTMLEditor fx:id="text" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="268.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <AnchorPane prefHeight="88.0" prefWidth="916.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="43.0" layoutY="48.0" text="Titulo" />
+            <Label layoutX="44.0" layoutY="14.0" text="Data:" />
+            <TextField fx:id="txftitulo" layoutX="86.0" layoutY="44.0" prefHeight="25.0" prefWidth="764.0" />
+            <Label fx:id="dtData" layoutX="86.0" layoutY="14.0" text="Label" />
+            <Label fx:id="lblNome" layoutX="750.0" layoutY="14.0" text="Bem-vindo Didi" />
+         </children>
+      </AnchorPane>
+   </top>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <bottom>
+      <FlowPane hgap="575.0" prefHeight="30.0" prefWidth="916.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#buttonVoltar" text="Voltar" />
+            <Button mnemonicParsing="false" onAction="#buttonCriar" text="Criar Nova Entrada" />
+         </children>
+         <padding>
+            <Insets left="100.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+      </FlowPane>
+   </bottom>
+</BorderPane>
