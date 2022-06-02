@@ -2,6 +2,7 @@ package Aplicacao.Menu;
 
 import Aplicacao.Diario.DiarioViewController;
 import Aplicacao.Main;
+import Aplicacao.Pesquisar.PesquisarViewController;
 import Config.User;
 import java.io.IOException;
 import java.net.URL;
@@ -56,8 +57,15 @@ public class MenuViewController implements Initializable {
     }
     
     @FXML
-    public void buttonPesquisar(ActionEvent e) {
+    public void buttonPesquisar(ActionEvent e) throws IOException {
+                        PesquisarViewController.setUser(m);
+        Parent MenuParent = FXMLLoader.load(getClass().getResource("../Pesquisar/PesquisarView.fxml"));
+        Scene MenuScene = new Scene(MenuParent);
         
+        Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        window.setScene(MenuScene);
+        
+        window.show();
     }
 
     /**
