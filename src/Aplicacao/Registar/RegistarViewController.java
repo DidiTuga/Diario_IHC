@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
@@ -36,6 +37,8 @@ public class RegistarViewController implements Initializable {
     PasswordField txfConfPassword;
     @FXML
     Label lblErro;
+    @FXML
+    Button cancelar;
 
     @FXML
     public void buttonRegistar(ActionEvent e) {
@@ -63,6 +66,7 @@ public class RegistarViewController implements Initializable {
                         query = "Insert into ihc(username, email, password) values('" + Username + "', '" + email + "', md5('" + password + "'));";
                         st.executeUpdate(query);
                         lblErro.setText("Registado com sucesso!");
+                        cancelar.setText("Voltar");
                     }
                 } catch (SQLException c) {
                     System.out.println(c.getMessage());

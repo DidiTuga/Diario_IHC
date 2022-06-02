@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Registar.RegistarViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="Aplicacao.Registar.RegistarViewController">
    <children>
       <VBox layoutX="25.0" layoutY="50.0" prefHeight="500.0" prefWidth="350.0" spacing="10.0">
          <children>
@@ -23,7 +23,7 @@
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
                <buttons>
                   <Button mnemonicParsing="false" onAction="#buttonRegistar" prefHeight="25.0" prefWidth="173.0" text="Registar" />
-                  <Button mnemonicParsing="false" onAction="#buttonCancelar" prefHeight="25.0" prefWidth="109.0" text="Cancelar" />
+                  <Button fx:id="cancelar" mnemonicParsing="false" onAction="#buttonCancelar" prefHeight="25.0" prefWidth="109.0" text="Cancelar" />
                </buttons>
             </ButtonBar>
          </children>
