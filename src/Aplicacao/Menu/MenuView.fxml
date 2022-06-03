@@ -5,29 +5,53 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Menu.MenuViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #CCD5AE#CCD5AE #CCD5AE#CCD5AE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Menu.MenuViewController">
    <children>
-      <Label fx:id="lblUser" layoutX="75.0" layoutY="102.0" prefHeight="17.0" prefWidth="119.0" text="Username" />
-      <Label fx:id="lblData" alignment="CENTER_RIGHT" layoutX="247.0" layoutY="102.0" prefHeight="17.0" prefWidth="78.0" text="Data" />
-      <VBox layoutX="75.0" layoutY="150.0" prefHeight="300.0" prefWidth="250.0" spacing="20.0">
+      <Label fx:id="lblUser" alignment="CENTER" layoutX="141.0" layoutY="117.0" prefHeight="25.0" prefWidth="120.0" text="Username" textFill="#d4a373">
+         <font>
+            <Font name="Gill Sans" size="18.0" />
+         </font></Label>
+      <Label fx:id="lblData" alignment="CENTER" layoutX="141.0" layoutY="495.0" prefHeight="25.0" prefWidth="120.0" text="Data" textFill="#d4a373">
+         <font>
+            <Font name="Gill Sans" size="18.0" />
+         </font></Label>
+      <VBox layoutX="75.0" layoutY="175.0" prefHeight="250.0" prefWidth="250.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#buttonNovaEntra" prefHeight="25.0" prefWidth="250.0" text="Nova Entrada">
+            <Button mnemonicParsing="false" onAction="#buttonNovaEntra" prefHeight="21.0" prefWidth="250.0" style="-fx-background-color: #D4A373#D4A373; -fx-background-radius: 50;" text="Criar/Alterar Entrada" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+               <font>
+                  <Font name="Gill Sans" size="18.0" />
+               </font>
             </Button>
-            <Button fx:id="btLogin" mnemonicParsing="false" onAction="#buttonPesquisar" prefHeight="25.0" prefWidth="250.0" text="Pesquisar">
+            <Button fx:id="btLogin" mnemonicParsing="false" onAction="#buttonPesquisar" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #D4A373#D4A373; -fx-background-radius: 50;" text="Pesquisar/Exportar" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+               <font>
+                  <Font name="Gill Sans" size="18.0" />
+               </font>
             </Button>
-            <Button fx:id="btLogin1" mnemonicParsing="false" onAction="#buttonSair" prefHeight="25.0" prefWidth="250.0" text="Sair">
+            <Button fx:id="btLogin1" mnemonicParsing="false" onAction="#buttonSair" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #D4A373#D4A373; -fx-background-radius: 50;" text="Sair" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+               <font>
+                  <Font name="Gill Sans" size="18.0" />
+               </font>
             </Button>
          </children>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
       </VBox>
+      <Label fx:id="lblUser1" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="83.0" prefHeight="25.0" prefWidth="120.0" text="Bem-Vindo" textFill="#d4a373">
+         <font>
+            <Font name="Gill Sans" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

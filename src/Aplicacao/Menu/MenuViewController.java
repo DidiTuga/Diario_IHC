@@ -40,7 +40,9 @@ public class MenuViewController implements Initializable {
         Scene MenuScene = new Scene(MenuParent);
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(MenuScene);
+        window.setTitle("Login");
         window.show();
+        
     }
     
     @FXML
@@ -51,6 +53,7 @@ public class MenuViewController implements Initializable {
         
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(MenuScene);
+        window.setTitle("Editar o diario de Hoje");
         
         window.show();
 
@@ -64,7 +67,8 @@ public class MenuViewController implements Initializable {
         
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(MenuScene);
-        
+        window.setTitle("Pesquisar Diario");
+        PesquisarViewController.setUser(m);
         window.show();
     }
 
@@ -76,7 +80,7 @@ public class MenuViewController implements Initializable {
         // TODO
 
         lblData.setText(ola.toString());
-        lblUser.setText("Bem-vindo " + m.getUsername());
+        lblUser.setText(m.getUsername());
         
     }
 
