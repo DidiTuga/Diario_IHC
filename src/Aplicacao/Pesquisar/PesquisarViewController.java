@@ -25,23 +25,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 public class PesquisarViewController implements Initializable {
-
+    
     static User m = new User();
     private final String algo = "Blowfish";
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
     private String path = "C:/Users/diogo/OneDrive - Universidade da Beira Interior/2ª Ano/2ºSemestre/Interacao Humana com o Computador/ProjetoIHC/src/Txt/";
+    @FXML
+    AnchorPane x;
     @FXML
     TextField txftitulo;
     @FXML
@@ -94,10 +98,26 @@ public class PesquisarViewController implements Initializable {
             }
 
         }
-        
+
         listagem.setItems(items);
         ordenar(e);
     }
+    public void handle(ActionEvent e){
+        print(x);
+    }
+     public void print(Node node) 
+            {
+                PrinterJob job = PrinterJob.createPrinterJob();
+                if(job != null){
+                    boolean printed = job.printPage(node);
+                    if(printed){
+                        job.endJob();
+                    }else{
+                        System.out.println("ERRO AO IMPRIMIR");
+                    }
+                }
+     
+            }
 
     @FXML
     public void ordenar(ActionEvent e) {
@@ -105,39 +125,40 @@ public class PesquisarViewController implements Initializable {
         ObservableList<String> d = listagem.getItems();
         int tam = d.size();
         String n = (String) filtro.getValue();
-        if (n.equals("Recente para o antigo") && tam > 1) {
-            int i, j;
-            String aux;
-            for (i = 0; i < tam; i++) {
-                for (j = 1; j < tam; j++) {
-                    LocalDate f = LocalDate.parse(d.get(j).substring(0, d.get(j).length() - 4), formatter);
-                    LocalDate f1 = LocalDate.parse(d.get(j - 1).substring(0, d.get(j).length() - 4), formatter);
-                    if (f.isAfter(f1)) {
-                        aux = d.get(j - 1);
-                        d.set(j - 1, d.get(j));
-                        d.set(j, aux);
+        if (n != null) {
+            if (n.equals("Recente para o antigo") && tam > 1) {
+                int i, j;
+                String aux;
+                for (i = 0; i < tam; i++) {
+                    for (j = 1; j < tam; j++) {
+                        LocalDate f = LocalDate.parse(d.get(j).substring(0, d.get(j).length() - 4), formatter);
+                        LocalDate f1 = LocalDate.parse(d.get(j - 1).substring(0, d.get(j).length() - 4), formatter);
+                        if (f.isAfter(f1)) {
+                            aux = d.get(j - 1);
+                            d.set(j - 1, d.get(j));
+                            d.set(j, aux);
+                        }
                     }
                 }
-            }
 
-        } else if (tam > 1) {
-            int i, j;
-            String aux;
-            for (i = 0; i < tam; i++) {
-                for (j = 1; j < tam; j++) {
-                    LocalDate f = LocalDate.parse(d.get(j).substring(0, d.get(j).length() - 4), formatter);
-                    LocalDate f1 = LocalDate.parse(d.get(j - 1).substring(0, d.get(j).length() - 4), formatter);
-                    if (f.isBefore(f1)) {
-                        aux = d.get(j - 1);
-                        d.set(j - 1, d.get(j));
-                        d.set(j, aux);
+            } else if (tam > 1) {
+                int i, j;
+                String aux;
+                for (i = 0; i < tam; i++) {
+                    for (j = 1; j < tam; j++) {
+                        LocalDate f = LocalDate.parse(d.get(j).substring(0, d.get(j).length() - 4), formatter);
+                        LocalDate f1 = LocalDate.parse(d.get(j - 1).substring(0, d.get(j).length() - 4), formatter);
+                        if (f.isBefore(f1)) {
+                            aux = d.get(j - 1);
+                            d.set(j - 1, d.get(j));
+                            d.set(j, aux);
+                        }
                     }
                 }
             }
+            System.out.println(d);
+            listagem.setItems(d);
         }
-        System.out.println(d);
-        listagem.setItems(d);
-
     }
 
     public void initialize(URL url, ResourceBundle rb) {
