@@ -74,7 +74,8 @@ public class PesquisarViewController implements Initializable {
     ArrayList<String> ficheiros_u = new ArrayList<>();
     ArrayList<String> titulo_u = new ArrayList<>();
     ArrayList<String> texto_u = new ArrayList<>();
-
+    
+    // volta para a janela do menu
     @FXML
     public void buttonVoltar(ActionEvent e) throws IOException {
         Parent MenuParent = FXMLLoader.load(getClass().getResource("../Menu/MenuView.fxml"));
@@ -87,7 +88,8 @@ public class PesquisarViewController implements Initializable {
         window.setTitle("Menu");
         MenuViewController.setUser(m);
     }
-
+    
+    // Vai ver nos ficheiros existentes do user os que estao dentro da data e os que tem a palavra 
     @FXML
     public void buttonPesquisar(ActionEvent e) throws IOException {
 
@@ -118,7 +120,7 @@ public class PesquisarViewController implements Initializable {
             dtData.setValue(LocalDate.now());
         }
     }
-
+    // Basicamente mete o conteudo do ficheiro dentro de uma label e devolve a label
     public Node getPrintableText() {
         Label texto = new Label();
         StringBuilder stringBuilder = new StringBuilder();
@@ -144,7 +146,7 @@ public class PesquisarViewController implements Initializable {
             return null;
         }
     }
-
+    // se a label nao for null imprime a label
     public void handle(ActionEvent e) {
         Node node = getPrintableText();
         if (node != null) {
@@ -158,7 +160,8 @@ public class PesquisarViewController implements Initializable {
             }
         }
     }
-
+    
+    // ordernar do mais antigo para o mais recente e virse versa
     @FXML
     public void ordenar(ActionEvent e) {
 
@@ -199,7 +202,7 @@ public class PesquisarViewController implements Initializable {
             listagem.setItems(d);
         }
     }
-
+    // inicializa a listview e a combobox
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ObservableList<String> items = FXCollections.observableArrayList();
@@ -242,7 +245,7 @@ public class PesquisarViewController implements Initializable {
         txftitulo.setEditable(false);
 
     }
-
+    // vai meter os ficheiros do user para arraylist
     public void atualizarTexto(String nomeFicheiro) {
         String path_ficheiro = path + m.getUsername() + "_" + nomeFicheiro;
         String texto = "";

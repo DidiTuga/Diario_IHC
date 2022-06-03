@@ -1,7 +1,6 @@
 package Aplicacao.Menu;
 
 import Aplicacao.Diario.DiarioViewController;
-import Aplicacao.Main;
 import Aplicacao.Pesquisar.PesquisarViewController;
 import Config.User;
 import java.io.IOException;
@@ -34,6 +33,7 @@ public class MenuViewController implements Initializable {
 
     LocalDate ola = LocalDate.now();
 
+    // Volta para a janela de login
     @FXML
     public void buttonSair(ActionEvent e) throws IOException {
         Parent MenuParent = FXMLLoader.load(getClass().getResource("../Login/LoginView.fxml"));
@@ -45,6 +45,7 @@ public class MenuViewController implements Initializable {
 
     }
 
+    // Entra na janela diario
     @FXML
     public void buttonNovaEntra(ActionEvent e) throws IOException {
         DiarioViewController.setUser(m);
@@ -59,6 +60,7 @@ public class MenuViewController implements Initializable {
 
     }
 
+    // entra na janela pesquisar
     @FXML
     public void buttonPesquisar(ActionEvent e) throws IOException {
         PesquisarViewController.setUser(m);
@@ -73,7 +75,7 @@ public class MenuViewController implements Initializable {
     }
 
     /**
-     * Initializes the controller class.
+     * Mete as labels com a data e o nome do username
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -83,6 +85,7 @@ public class MenuViewController implements Initializable {
         lblUser.setText(m.getUsername());
 
     }
+    // mete a variavel static user com o valor da "janela que o chama" 
 
     public static void setUser(User m) {
         MenuViewController.m = m;

@@ -40,6 +40,7 @@ public class LoginViewController implements Initializable {
     Button btLogin;
     @FXML
     Button btRegistar;
+    // abre a janela de registar
 
     @FXML
     public void buttonRegistar(ActionEvent e) throws IOException {
@@ -52,6 +53,7 @@ public class LoginViewController implements Initializable {
         window.show();
     }
 
+    // Verifica se o user existe e se exister entra
     @FXML
     public void buttonLogin(ActionEvent e) throws IOException {
         String username = txfUsername.getText();
@@ -63,7 +65,8 @@ public class LoginViewController implements Initializable {
             // CONTROLO System.out.println(query);
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                m = new User(username, password);
+
+                m = new User(username, password);  // inicializa o user 
                 MenuViewController.setUser(m);
                 Parent MenuParent = FXMLLoader.load(getClass().getResource("../Menu/MenuView.fxml"));
                 Scene MenuScene = new Scene(MenuParent);
