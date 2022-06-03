@@ -5,29 +5,61 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="Aplicacao.Registar.RegistarViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #CCD5AE#CCD5AE #CCD5AE#CCD5AE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Registar.RegistarViewController">
    <children>
-      <VBox layoutX="25.0" layoutY="50.0" prefHeight="500.0" prefWidth="350.0" spacing="10.0">
+      <VBox layoutX="75.0" layoutY="175.0" prefHeight="250.0" prefWidth="250.0" spacing="30.0">
          <children>
-            <Label text="Username:" />
-            <TextField fx:id="txfUsername" prefHeight="25.0" prefWidth="223.0" />
-            <Label text="Email:" />
-            <TextField fx:id="txfemail" prefHeight="25.0" prefWidth="223.0" />
-            <Label text="Password:" />
-            <PasswordField fx:id="txfPassword" prefHeight="25.0" prefWidth="223.0" />
-            <Label text="Con. Password:" />
-            <PasswordField fx:id="txfConfPassword" prefHeight="25.0" prefWidth="223.0" />
+            <TextField fx:id="txfUsername" prefHeight="25.0" prefWidth="223.0" promptText="Username" style="-fx-background-radius: 50;">
+               <font>
+                  <Font name="Gill Sans" size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txfemail" prefHeight="25.0" prefWidth="223.0" promptText="Email" style="-fx-background-radius: 50;">
+               <font>
+                  <Font name="Gill Sans" size="18.0" />
+               </font></TextField>
+            <PasswordField fx:id="txfPassword" prefHeight="25.0" prefWidth="223.0" promptText="Password" style="-fx-background-radius: 50;">
+               <font>
+                  <Font name="Gill Sans" size="18.0" />
+               </font></PasswordField>
+            <PasswordField fx:id="txfConfPassword" prefHeight="25.0" prefWidth="223.0" promptText="Confirmar Password" style="-fx-background-radius: 50;">
+               <font>
+                  <Font name="Gill Sans" size="18.0" />
+               </font></PasswordField>
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
                <buttons>
-                  <Button mnemonicParsing="false" onAction="#buttonRegistar" prefHeight="25.0" prefWidth="173.0" text="Registar" />
-                  <Button fx:id="cancelar" mnemonicParsing="false" onAction="#buttonCancelar" prefHeight="25.0" prefWidth="109.0" text="Cancelar" />
+                  <Button mnemonicParsing="false" onAction="#buttonRegistar" prefHeight="25.0" prefWidth="173.0" style="-fx-background-radius: 50; -fx-background-color: #D4A373#D4A373 #D4A373#D4A373;" text="Registar" textFill="WHITE">
+                     <font>
+                        <Font name="Gill Sans" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="cancelar" mnemonicParsing="false" onAction="#buttonCancelar" prefHeight="25.0" prefWidth="109.0" style="-fx-background-radius: 50; -fx-background-color: #D4A373#D4A373 #D4A373#D4A373;" text="Cancelar" textFill="WHITE">
+                     <font>
+                        <Font name="Gill Sans" size="18.0" />
+                     </font></Button>
                </buttons>
             </ButtonBar>
          </children>
       </VBox>
-      <Label fx:id="lblErro" alignment="CENTER" layoutX="39.0" layoutY="559.0" prefHeight="17.0" prefWidth="317.0" />
+      <Label fx:id="lblErro" alignment="CENTER" layoutX="75.0" layoutY="527.0" prefHeight="19.0" prefWidth="250.0" textFill="#d4a373">
+         <font>
+            <Font name="Gill Sans" size="16.0" />
+         </font></Label>
+      <Label alignment="CENTER" layoutX="75.0" layoutY="84.0" prefHeight="40.0" prefWidth="250.0" text="O Nosso Diário" textFill="#d4a373">
+         <font>
+            <Font name="Gill Sans" size="36.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.9960784316062927" green="0.9803921580314636" blue="0.8784313797950745" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

@@ -33,7 +33,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class DiarioViewController implements Initializable {
     static User m = new User();
     private final String algo = "Blowfish";
-    private String path = "C:/Users/diogo/OneDrive - Universidade da Beira Interior/2ª Ano/2ºSemestre/Interacao Humana com o Computador/ProjetoIHC/src/Txt/"
+    private String path = "/Users/luissantos/Documents/UBI/IHC/Diario_IHC/src/Txt/"
             + m.getUsername()+"_"+LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-uuuu")) + ".txt";
     @FXML
     TextField txftitulo;

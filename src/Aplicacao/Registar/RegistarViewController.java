@@ -60,7 +60,7 @@ public class RegistarViewController implements Initializable {
                     ResultSet rs = st.executeQuery(query);
                     if (rs.next()) {
 
-                        lblErro.setText("Já existe um utilizador com esse email/username!");
+                        lblErro.setText("Username/Email indisponível");
 
                     } else { // quer dizer que passou em todas as condições e assim podemos adicionar a base de dados!
                         query = "Insert into ihc(username, email, password) values('" + Username + "', '" + email + "', md5('" + password + "'));";

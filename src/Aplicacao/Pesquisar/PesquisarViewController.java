@@ -43,7 +43,7 @@ public class PesquisarViewController implements Initializable {
     static User m = new User();
     private final String algo = "Blowfish";
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
-    private String path = "C:/Users/diogo/OneDrive - Universidade da Beira Interior/2ª Ano/2ºSemestre/Interacao Humana com o Computador/ProjetoIHC/src/Txt/";
+    private String path = "/Users/luissantos/Documents/UBI/IHC/Diario_IHC/src/Txt/";
     @FXML
     AnchorPane x;
     @FXML
