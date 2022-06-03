@@ -19,6 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  * FXML Controller class
@@ -46,6 +48,11 @@ public class RegistarViewController implements Initializable {
         String email = txfemail.getText();
         String password = txfPassword.getText();
         String confpass = txfConfPassword.getText();
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
         if (Username.equals("") || email.equals("") | password.equals("") || confpass.equals("")) { // estar algum vazio
             lblErro.setText("Tem de ter todos os dados preenchidos!");
         } else {
@@ -60,19 +67,21 @@ public class RegistarViewController implements Initializable {
                     ResultSet rs = st.executeQuery(query);
                     if (rs.next()) {
 
-                        lblErro.setText("Username/Email indisponível");
+                        JOptionPane.showMessageDialog(null, "Já existe um user com esses dados!", "Aviso", JOptionPane.WARNING_MESSAGE);
 
                     } else { // quer dizer que passou em todas as condições e assim podemos adicionar a base de dados!
                         query = "Insert into ihc(username, email, password) values('" + Username + "', '" + email + "', md5('" + password + "'));";
                         st.executeUpdate(query);
-                        lblErro.setText("Registado com sucesso!");
+
+                        JOptionPane.showMessageDialog(null, "Foi registado com sucesso!", "Registo", JOptionPane.INFORMATION_MESSAGE);
                         cancelar.setText("Voltar");
                     }
                 } catch (SQLException c) {
                     System.out.println(c.getMessage());
                 }
             } else { // passwords diferentes
-                lblErro.setText("As passwords que inseriu não coincidem!");
+
+                JOptionPane.showMessageDialog(null, "Passwords Diferentes!", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
         }
     }

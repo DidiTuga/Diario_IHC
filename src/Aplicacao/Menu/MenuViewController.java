@@ -31,9 +31,9 @@ public class MenuViewController implements Initializable {
     Label lblUser;
     @FXML
     Label lblData;
-    
+
     LocalDate ola = LocalDate.now();
-    
+
     @FXML
     public void buttonSair(ActionEvent e) throws IOException {
         Parent MenuParent = FXMLLoader.load(getClass().getResource("../Login/LoginView.fxml"));
@@ -42,29 +42,29 @@ public class MenuViewController implements Initializable {
         window.setScene(MenuScene);
         window.setTitle("Login");
         window.show();
-        
+
     }
-    
+
     @FXML
     public void buttonNovaEntra(ActionEvent e) throws IOException {
-                DiarioViewController.setUser(m);
+        DiarioViewController.setUser(m);
         Parent MenuParent = FXMLLoader.load(getClass().getResource("../Diario/DiarioView.fxml"));
         Scene MenuScene = new Scene(MenuParent);
-        
+
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(MenuScene);
         window.setTitle("Editar o diario de Hoje");
-        
+
         window.show();
 
     }
-    
+
     @FXML
     public void buttonPesquisar(ActionEvent e) throws IOException {
-                        PesquisarViewController.setUser(m);
+        PesquisarViewController.setUser(m);
         Parent MenuParent = FXMLLoader.load(getClass().getResource("../Pesquisar/PesquisarView.fxml"));
         Scene MenuScene = new Scene(MenuParent);
-        
+
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(MenuScene);
         window.setTitle("Pesquisar Diario");
@@ -81,11 +81,11 @@ public class MenuViewController implements Initializable {
 
         lblData.setText(ola.toString());
         lblUser.setText(m.getUsername());
-        
+
     }
 
     public static void setUser(User m) {
         MenuViewController.m = m;
     }
-    
+
 }

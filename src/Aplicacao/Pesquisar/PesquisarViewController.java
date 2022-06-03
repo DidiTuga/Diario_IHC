@@ -2,9 +2,9 @@ package Aplicacao.Pesquisar;
 
 import Aplicacao.Menu.MenuViewController;
 import Config.User;
-import static java.awt.SystemColor.text;
+import com.sun.javafx.print.PrintHelper;
+import com.sun.javafx.print.Units;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -26,26 +26,35 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import org.jsoup.Jsoup;
 
 public class PesquisarViewController implements Initializable {
-    
+
     static User m = new User();
     private final String algo = "Blowfish";
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
-    private String path = "/Users/luissantos/Documents/UBI/IHC/Diario_IHC/src/Txt/";
-
+    private String path = "C:/Users/diogo/OneDrive - Universidade da Beira Interior/2ª Ano/2ºSemestre/Interacao Humana com o Computador/ProjetoIHC/src/Txt/";
+    @FXML
+    VBox x;
     @FXML
     TextField txftitulo;
     @FXML
@@ -61,6 +70,7 @@ public class PesquisarViewController implements Initializable {
     @FXML
     ListView<String> listagem = new ListView<String>();
 
+    String valorUltimo = null;
     ArrayList<String> ficheiros_u = new ArrayList<>();
     ArrayList<String> titulo_u = new ArrayList<>();
     ArrayList<String> texto_u = new ArrayList<>();
@@ -81,50 +91,74 @@ public class PesquisarViewController implements Initializable {
     @FXML
     public void buttonPesquisar(ActionEvent e) throws IOException {
 
-        LocalDate datai = dtData.getValue();// format(DateTimeFormatter.ofPattern("dd-MM-uuuu")); 
-        LocalDate dataf = dtData_ate.getValue();// format(DateTimeFormatter.ofPattern("dd-MM-uuuu")); 
-        ObservableList<String> items = FXCollections.observableArrayList();
-        String palavra = txfpesquisa.getText();
+        LocalDate datai = dtData.getValue();
+        LocalDate dataf = dtData_ate.getValue();
+        if (datai != null && dataf != null) {
 
-        for (int i = 0; i < ficheiros_u.size(); i++) {
-            LocalDate f = LocalDate.parse(ficheiros_u.get(i).substring(0, ficheiros_u.get(i).length() - 4), formatter);
-            // System.out.println(f.toString()+ "...");
-            if ((f.isBefore(dataf) || f.isEqual(dataf)) && (f.isAfter(datai) || f.isEqual(datai))) {
-                if ((texto_u.get(i).contains(palavra) || titulo_u.get(i).contains(palavra))) {
-                    items.add(ficheiros_u.get(i));
-                } else if (palavra.equals("")) {
-                    items.add(ficheiros_u.get(i));
-                }
+            ObservableList<String> items = FXCollections.observableArrayList();
+            String palavra = txfpesquisa.getText();
 
-            }
-
-        }
-
-        listagem.setItems(items);
-        ordenar(e);
-    }
-    
-   
-   
-    public void handle(ActionEvent e){
-   
-        System.out.println(Jsoup.parse(text.getHtmlText()).text());
-    }
-     /*
-     public void print(Node node) 
-            {
-                PrinterJob job = PrinterJob.createPrinterJob();
-                if(job != null){
-                    boolean printed = job.printPage(node);
-                    if(printed){
-                        job.endJob();
-                    }else{
-                        System.out.println("ERRO AO IMPRIMIR");
+            for (int i = 0; i < ficheiros_u.size(); i++) {
+                LocalDate f = LocalDate.parse(ficheiros_u.get(i).substring(0, ficheiros_u.get(i).length() - 4), formatter);
+                if ((f.isBefore(dataf) || f.isEqual(dataf)) && (f.isAfter(datai) || f.isEqual(datai))) {
+                    if ((texto_u.get(i).contains(palavra) || titulo_u.get(i).contains(palavra))) {
+                        items.add(ficheiros_u.get(i));
+                    } else if (palavra.equals("")) {
+                        items.add(ficheiros_u.get(i));
                     }
+
                 }
-     
+
             }
-*/
+
+            listagem.setItems(items);
+            ordenar(e);
+        } else {
+            dtData_ate.setValue(LocalDate.now());
+            dtData.setValue(LocalDate.now());
+        }
+    }
+
+    public Node getPrintableText() {
+        Label texto = new Label();
+        StringBuilder stringBuilder = new StringBuilder();
+        if (valorUltimo != null) {
+            String teste = null;
+            for (int i = 0; i < ficheiros_u.size(); i++) {
+                if (ficheiros_u.get(i).equalsIgnoreCase(valorUltimo)) {
+                    teste = Jsoup.parse(texto_u.get(i)).html();
+                    stringBuilder.append("Titulo: " + titulo_u.get(i) + "\n\nConteudo:");
+                }
+            }
+            String teste1 = Jsoup.parse(teste).wholeText();
+            stringBuilder.append(teste1);
+            texto.setText(stringBuilder.toString());
+            return texto;
+        } else {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+            JOptionPane.showMessageDialog(null, "Ficheiro nao selecionado: Tem que selecionar um ficheiro.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return null;
+        }
+    }
+
+    public void handle(ActionEvent e) {
+        Node node = getPrintableText();
+        if (node != null) {
+            PrinterJob printerJob = PrinterJob.createPrinterJob();
+
+            if (printerJob != null) {
+                boolean success = printerJob.printPage(node);
+                if (success) {
+                    printerJob.endJob();
+                }
+            }
+        }
+    }
+
     @FXML
     public void ordenar(ActionEvent e) {
 
@@ -162,14 +196,12 @@ public class PesquisarViewController implements Initializable {
                     }
                 }
             }
-            System.out.println(d);
             listagem.setItems(d);
         }
     }
 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        text.setDisable(true);
         ObservableList<String> items = FXCollections.observableArrayList();
         filtro.setPromptText("Ordem de Pesquisa");
         File ficheiros = new File(path);
@@ -190,21 +222,18 @@ public class PesquisarViewController implements Initializable {
                         "Recente para o antigo"
                 );
         filtro.setItems(filtros);
-        dtData_ate.setValue(LocalDate.now());
-        dtData.setValue(LocalDate.now());
 
         // Quando seleciona uma cena da lista
         listagem.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // Your action here
-                //System.out.println("Selected item: " + newValue);
+
                 for (int i = 0; i < ficheiros_u.size(); i++) {
                     if (ficheiros_u.get(i).equals(newValue)) {
-                        text.setDisable(false);
+                        valorUltimo = newValue;
                         text.setHtmlText(texto_u.get(i));
                         txftitulo.setText(titulo_u.get(i));
-                        text.setDisable(true);
+
                     }
                 }
 

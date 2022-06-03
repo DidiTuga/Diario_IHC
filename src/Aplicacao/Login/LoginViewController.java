@@ -21,6 +21,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  * FXML Controller class
@@ -28,13 +30,12 @@ import javafx.stage.Stage;
  * @author jpc
  */
 public class LoginViewController implements Initializable {
+
     User m;
     @FXML
     TextField txfUsername;
     @FXML
     PasswordField txfPassword;
-    @FXML
-    Label lblErro;
     @FXML
     Button btLogin;
     @FXML
@@ -66,14 +67,18 @@ public class LoginViewController implements Initializable {
                 MenuViewController.setUser(m);
                 Parent MenuParent = FXMLLoader.load(getClass().getResource("../Menu/MenuView.fxml"));
                 Scene MenuScene = new Scene(MenuParent);
-                
+
                 Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 window.setScene(MenuScene);
                 window.setTitle("Menu");
                 window.show();
             } else {
-
-                lblErro.setText("Os dados que inseriu não estão válidos!");
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception exception) {
+                    System.out.println(exception.getMessage());
+                }
+                JOptionPane.showMessageDialog(null, "Dados Inválidos", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException c) {
             System.out.println(c.getMessage());
