@@ -80,7 +80,7 @@ public class MenuViewController implements Initializable {
         // TODO
 
         lblData.setText(ola.toString());
-        lblUser.setText("Bem-vindo " + m.getUsername());
+        lblUser.setText(m.getUsername());
         
     }
 
