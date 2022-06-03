@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #CCD5AE#CCD5AE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Login.LoginViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #CCD5AE#CCD5AE;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="Aplicacao.Login.LoginViewController">
    <children>
       <VBox layoutX="76.0" layoutY="175.0" prefHeight="250.0" prefWidth="250.0" spacing="40.0" style="-fx-alignment: center;">
          <children>
@@ -41,10 +41,6 @@
             <Insets top="50.0" />
          </padding>
       </VBox>
-      <Label fx:id="lblErro" alignment="CENTER" layoutX="96.0" layoutY="509.0" prefHeight="33.0" prefWidth="211.0" textFill="#d4a373">
-         <font>
-            <Font name="Gill Sans" size="14.0" />
-         </font></Label>
       <Label alignment="CENTER" layoutX="75.0" layoutY="111.0" prefHeight="40.0" prefWidth="250.0" text="O Nosso Diário" textFill="#d4a373">
          <font>
             <Font name="Gill Sans" size="36.0" />

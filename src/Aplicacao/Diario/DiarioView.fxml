@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="592.0" minWidth="787.0" prefHeight="714.0" prefWidth="926.0" style="-fx-background-color: #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Diario.DiarioViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="592.0" minWidth="787.0" prefHeight="714.0" prefWidth="926.0" style="-fx-background-color: #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Diario.DiarioViewController">
    <center>
       <HTMLEditor fx:id="text" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="268.0" prefWidth="600.0" style="-fx-border-color: #FEFAE0#FEFAE0; -fx-border-width: 5; -fx-background-color: #FEFAE0;" BorderPane.alignment="CENTER">
          <BorderPane.margin>

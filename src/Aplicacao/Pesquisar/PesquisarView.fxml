@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<BorderPane style="-fx-background-color: #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Pesquisar.PesquisarViewController">
+<BorderPane style="-fx-background-color: #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE #CCD5AE#CCD5AE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Pesquisar.PesquisarViewController">
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
@@ -59,7 +59,7 @@
       </VBox>
    </left>
    <center>
-      <VBox spacing="5.0" style="-fx-border-color: #FEFAE0; -fx-border-width: 5; -fx-background-color: #FAEDCD#FAEDCD;" BorderPane.alignment="CENTER">
+      <VBox spacing="5.0" style="-fx-border-color: #FEFAE0; -fx-border-width: 5; -fx-background-color: #FAEDCD#FAEDCD;" BorderPane.alignment="CENTER" fx:id="x">
          <children>
             <TextField fx:id="txftitulo" prefHeight="26.0" promptText="Título" style="-fx-background-radius: 50;">
                <font>
@@ -69,7 +69,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <HTMLEditor fx:id="text" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;false&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="590.0" prefWidth="700.0" />
+            <HTMLEditor fx:id="text" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="585.0" prefWidth="651.0" />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

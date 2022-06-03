@@ -1,7 +1,5 @@
 package Aplicacao;
 
-import java.io.IOException;
-import java.sql.Connection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +11,6 @@ import javafx.stage.Stage;
  * @author jpc
  */
 public class Main extends Application {
-
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -27,8 +24,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
-    
-     
-    
+
 }
