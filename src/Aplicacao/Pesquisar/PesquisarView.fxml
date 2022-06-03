@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="592.0" minWidth="787.0" prefHeight="714.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Pesquisar.PesquisarViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="592.0" minWidth="787.0" prefHeight="711.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacao.Pesquisar.PesquisarViewController">
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
@@ -25,7 +25,7 @@
                   <ComboBox fx:id="filtro" layoutX="7.0" layoutY="5.0" onAction="#ordenar" prefHeight="25.0" prefWidth="254.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" fx:id="x">
                <children>
                   <HTMLEditor fx:id="text" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;false&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutY="71.0" prefHeight="631.0" prefWidth="639.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="71.0" />
                   <Label layoutX="14.0" layoutY="28.0" text="Titulo" />
@@ -46,6 +46,7 @@
             <Label layoutX="36.0" layoutY="56.0" text="Até:" />
             <Button layoutX="458.0" layoutY="52.0" mnemonicParsing="false" onAction="#buttonPesquisar" prefHeight="25.0" prefWidth="379.0" text="Pesquisar" />
             <Button layoutX="310.0" layoutY="52.0" mnemonicParsing="false" onAction="#buttonVoltar" prefHeight="25.0" prefWidth="97.0" text="Voltar" />
+            <Button layoutX="850.0" layoutY="17.0" mnemonicParsing="false" onAction="#handle" prefHeight="60.0" prefWidth="52.0" text="PDF" />
          </children>
       </AnchorPane>
    </top>
