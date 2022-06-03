@@ -86,7 +86,7 @@ public class DiarioViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         dtData.setText(LocalDate.now().toString());
-        lblNome.setText("User: "+ m.getUsername());
+        lblNome.setText(m.getUsername());
         File ficheiro = new File(path);
         boolean exist = ficheiro.exists();
         String texto = new String();

@@ -2,6 +2,7 @@ package Aplicacao.Pesquisar;
 
 import Aplicacao.Menu.MenuViewController;
 import Config.User;
+import static java.awt.SystemColor.text;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -32,11 +33,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import org.jsoup.Jsoup;
 
 public class PesquisarViewController implements Initializable {
     
@@ -44,8 +45,7 @@ public class PesquisarViewController implements Initializable {
     private final String algo = "Blowfish";
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
     private String path = "/Users/luissantos/Documents/UBI/IHC/Diario_IHC/src/Txt/";
-    @FXML
-    AnchorPane x;
+
     @FXML
     TextField txftitulo;
     @FXML
@@ -103,9 +103,14 @@ public class PesquisarViewController implements Initializable {
         listagem.setItems(items);
         ordenar(e);
     }
+    
+   
+   
     public void handle(ActionEvent e){
-        print(x);
+   
+        System.out.println(Jsoup.parse(text.getHtmlText()).text());
     }
+     /*
      public void print(Node node) 
             {
                 PrinterJob job = PrinterJob.createPrinterJob();
@@ -119,7 +124,7 @@ public class PesquisarViewController implements Initializable {
                 }
      
             }
-
+*/
     @FXML
     public void ordenar(ActionEvent e) {
 
