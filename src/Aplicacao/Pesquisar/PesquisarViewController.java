@@ -74,6 +74,7 @@ public class PesquisarViewController implements Initializable {
         window.setScene(MenuScene);
 
         window.show();
+        window.setTitle("Menu");
         MenuViewController.setUser(m);
     }
 

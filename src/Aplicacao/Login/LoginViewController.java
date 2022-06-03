@@ -47,6 +47,7 @@ public class LoginViewController implements Initializable {
 
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(RegistarScene);
+        window.setTitle("Registar");
         window.show();
     }
 
@@ -68,7 +69,7 @@ public class LoginViewController implements Initializable {
                 
                 Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 window.setScene(MenuScene);
-                
+                window.setTitle("Menu");
                 window.show();
             } else {
 

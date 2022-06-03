@@ -84,6 +84,7 @@ public class RegistarViewController implements Initializable {
 
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(RegistarScene);
+        window.setTitle("Login");
         window.show();
     }
 
