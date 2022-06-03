@@ -43,7 +43,9 @@ public class DiarioViewController implements Initializable {
     Label dtData;
     @FXML 
     Label lblNome;
-
+    
+    
+    // Volta para a janela anterior
     @FXML
     public void buttonVoltar(ActionEvent e) throws IOException {
         Parent MenuParent = FXMLLoader.load(getClass().getResource("../Menu/MenuView.fxml"));
@@ -56,7 +58,7 @@ public class DiarioViewController implements Initializable {
         window.setTitle("Menu");
         MenuViewController.setUser(m);
     }
-
+    // Vai buscar as strings do titulo e do Text e coloca os dentro de um ficheiro nomedoU_data.txt e depois encripta-os
     @FXML
     public void buttonCriar(ActionEvent e) throws IOException {
 
@@ -78,11 +80,13 @@ public class DiarioViewController implements Initializable {
         encriptar(m.getPassword(), path, path); // USAR A PASSWROD PARA encriptar
         buttonVoltar(e);
     }
-
+    // mete a variavel static user com o valor da "janela que o chama" 
     public static void setUser(User m){
         DiarioViewController.m = m;
     }
-
+    
+    // Inicializa os parametros com o dia e o user e se existir ja um ficheiro do dia
+    // vai desencriptar e vai o colocar no HTMLEditor e Titulo
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         dtData.setText(LocalDate.now().toString());
@@ -112,7 +116,7 @@ public class DiarioViewController implements Initializable {
         }
     }
     
-    // FUNÇOES DE ENCRIPTAR O FICHEIRO
+    //encripta o ficheirodeEntrada conforme a password e guarda no ficheiroSaida
        public void encriptar(String password, String ficheiroEntrada, String ficheiroSaida) {
         try {
             byte[] passwordInBytes = password.getBytes("ISO-8859-1");
@@ -127,7 +131,7 @@ public class DiarioViewController implements Initializable {
             System.out.println("Erro quando tentava encriptar os dados do fichiero de entrada" + e.getMessage());
         }
     }
-
+    // desencripta o ficheirodeEntrada conforme a password e guarda no ficheiroSaida
     public void desencriptar(String password, String ficheiroEntrada, String ficheiroSaida) {
         try {
             byte[] passwordInBytes = password.getBytes("ISO-8859-1");
@@ -142,7 +146,7 @@ public class DiarioViewController implements Initializable {
             System.out.println("Erro quando tentava desencriptar os dados do ficheiro de entrada");
         }
     }
-
+    // abre o ficheiro e passa o conteudo para Byte[]
     private byte[] abrirFichiero(String filename) {
         try {
             File ficheiro = new File(filename);
@@ -156,7 +160,7 @@ public class DiarioViewController implements Initializable {
             return null;
         }
     }
-
+    // guarda o ficheiro com bytes 
     private void salvarFichiero(String filename, byte[] data) {
         try {
             FileOutputStream out = new FileOutputStream(filename);
